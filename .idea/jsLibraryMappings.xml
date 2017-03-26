@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="jar://$PROJECT_DIR$/src/algs4.jar!/edu/princeton/cs/algs4/StdIn.java.html" libraries="{ECMAScript 6}" />
+  </component>
+</project>
