@@ -37,7 +37,7 @@ public class QuickSort {
       //处理边界溢出的情况
       //i与j相遇的情况
       // 1. i刚好等于j 因为 a[i] < a[lo] 为false a[j] > a[lo] 为false 这个时候说明 a[lo] 等于 a[j]
-      // 2. i 大于 j 时
+      // 2. i 大于, j 时
       //      [ 5, 1, 3, 4, 6, 7, 8, 9, 10]
       //index   0, 1, 2, 3, 4, 5, 6, 7, 8
       //lo = 0 时  i = 4 j = 3
