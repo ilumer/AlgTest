@@ -86,7 +86,7 @@ public class ReverseLinkedNode {
     }
   }
 
-  public static class Node {
+  private static class Node {
     int id;
     Node next;
 
