@@ -30,9 +30,9 @@ public class BinaryTreeLevelOrder {
     if (root == null) {
       return lists;
     }
-    //add to last element
+    //put to last element
     queue.offer(root);
-    //add offer http://stackoverflow.com/questions/2703984/what-is-the-difference-between-the-add-and-offer-methods-in-a-queue-in-java
+    //put offer http://stackoverflow.com/questions/2703984/what-is-the-difference-between-the-add-and-offer-methods-in-a-queue-in-java
     while (!queue.isEmpty()) {
       List<Integer> list = new ArrayList<>();
       int size = queue.size();
