@@ -1,6 +1,7 @@
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
+import java.util.LinkedList;
 
 /**
  * Created by ilumer on 17-4-18.
@@ -211,6 +212,19 @@ public class AVL<Key extends Comparable<Key>, Value> {
     keysInOrder(root.right, queue);
   }
 
+  private void BFSKey(){
+    java.util.Queue<Node> unVisited = new LinkedList<>();
+    unVisited.add(root);
+    while (!unVisited.isEmpty()){
+      Node current = unVisited.poll();
+      if (current.left!=null)
+        unVisited.add(current.left);
+      if (current.right!=null)
+        unVisited.add(current.right);
+      StdOut.print(current.key);
+    }
+  }
+
   public static void main(String[] args) {
     AVL<String, Integer> st = new AVL<String, Integer>();
     for (int i = 0; !StdIn.isEmpty(); i++) {
@@ -219,6 +233,8 @@ public class AVL<Key extends Comparable<Key>, Value> {
     }
     for (String s : st.keys())
       StdOut.println(s + " " + st.get(s));
+    StdOut.println();
+    st.BFSKey();
     StdOut.println();
   }
 }
