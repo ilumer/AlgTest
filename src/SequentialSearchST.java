@@ -1,3 +1,4 @@
+import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -7,17 +8,21 @@ import edu.princeton.cs.algs4.StdOut;
  */
 public class SequentialSearchST<Key, Value> {
 
-  Node first = null;
+  Node root = null;
   int size = 0;
 
   public SequentialSearchST() {
   }
 
-  public Node get(Key key) {
-    Node temp = first;
+  public boolean contains(Key key){
+    return get(key) != null;
+  }
+
+  public Value get(Key key) {
+    Node temp = root;
     while (temp != null) {
       if (temp.key.equals(key)) {
-        return temp;
+        return temp.value;
       }
       temp = temp.next;
     }
@@ -25,20 +30,15 @@ public class SequentialSearchST<Key, Value> {
   }
 
   public void put(Key key, Value value) {
-    if (first == null) {
-      first = new Node(key, value, null);
-      size++;
-      return;
-    }
-    Node temp = first;
-    while (temp.next != null) {
+    Node temp = root;
+    while (temp!= null) {
       if (temp.key.equals(key)) {
         temp.value = value;
         return;
       }
       temp = temp.next;
     }
-    temp.next = new Node(key, value, null);
+    root = new Node(key, value, root);
     size++;
   }
 
@@ -50,31 +50,30 @@ public class SequentialSearchST<Key, Value> {
     return size == 0;
   }
 
-  public void showKeys() {
-    Node temp = first;
-    while (temp != null) {
-      StdOut.println(temp.key + " " + temp.value);
-      temp = temp.next;
-    }
+  public Iterable<Key> keys(){
+    return keys(root);
   }
 
-  /*public Iterable<Key> keys(){
-
-  }*/
+  private Queue<Key> keys(Node root) {
+    Queue<Key> queue = new Queue<Key>();
+    for (Node x = root; x != null; x = x.next)
+      queue.enqueue(x.key);
+    return queue;
+  }
 
   /**
    * @return 如果没有命中时返回false, 删除成功后返回true
    */
   public boolean delete(Key key) {
-    if (first==null){
+    if (root ==null){
       throw new IllegalArgumentException("argument to delete is null");
     }
-    if(first.key.equals(key)){
-      first = first.next;
+    if(root.key.equals(key)){
+      root = root.next;
       size--;
       return true;
     }
-    Node temp = first;
+    Node temp = root;
     if (temp.next != null) {
       if (temp.next.key.equals(key)){
         Node delete = temp.next;
@@ -92,8 +91,8 @@ public class SequentialSearchST<Key, Value> {
       String key = StdIn.readString();
       st.put(key, i);
     }
-    st.showKeys();
-    System.out.println(st.size());
+    for (String s:st.keys())
+      StdOut.println(s+" "+st.get(s));
   }
 
   private class Node {
