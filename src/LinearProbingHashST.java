@@ -5,6 +5,7 @@ import edu.princeton.cs.algs4.StdOut;
 /**
  * Created by ilumer on 17-4-20.
  * http://algs4.cs.princeton.edu/34hash/LinearProbingHashST.java.html
+ * Data files:   http://algs4.cs.princeton.edu/34hash/tinyST.txt
  */
 public class LinearProbingHashST<Key,Value> {
   private static final int INIT_CAPACITY = 4;
@@ -96,11 +97,11 @@ public class LinearProbingHashST<Key,Value> {
     values[i++] = null;
     this.num--;
     int j = (i+1)%size;//取模很重要
-    while (keys[i]!=null){
-      Key tempKey = keys[i];
-      Value tempValue = values[i];
-      keys[i] = null;
-      values[i] = null;
+    while (keys[j]!=null){
+      Key tempKey = keys[j];
+      Value tempValue = values[j];
+      keys[j] = null;
+      values[j] = null;
       //需要注意减低N
       num--;
       put(tempKey,tempValue);
@@ -151,5 +152,11 @@ public class LinearProbingHashST<Key,Value> {
     StdOut.println();
     for (String s : st.keys())
       StdOut.println(s + " " + st.get(s));
+    //
+    StdOut.println();
+    st.delete("C");
+    for (String s:st.keys()){
+      StdOut.println(s+" " +st.get(s));
+    }
   }
 }
