@@ -100,6 +100,7 @@ public class BST<Key extends Comparable<Key> ,Value> {
   }
 
   private Node min(Node node){
+    //node 是否为null
     if (node.left!=null)
       return min(node.left);
     else
