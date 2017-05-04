@@ -86,3 +86,6 @@ fabric.properties
 hs_err_pid*
 将删除 src/tiny.txt
 将删除 src/words3.txt
+
+.idea/kotlinc.xml
+.idea/codeStyleSettings.xml
