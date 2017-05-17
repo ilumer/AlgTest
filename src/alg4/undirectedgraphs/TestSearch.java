@@ -1,4 +1,4 @@
-package alg4;
+package alg4.undirectedgraphs;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;

@@ -1,4 +1,4 @@
-package alg4;
+package alg4.undirectedgraphs;
 
 /**
  * Created by ilumer on 17-5-1.
