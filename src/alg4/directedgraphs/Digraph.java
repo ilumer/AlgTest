@@ -1,4 +1,4 @@
-package alg4.directedgradhs;
+package alg4.directedgraphs;
 
 import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.In;
@@ -25,8 +25,8 @@ import edu.princeton.cs.algs4.StdOut;
  *  12: 9
  *
  *
- *  javac-algs4 alg4/directedgradhs/Digraph.java
- *  java-algs4 alg4/directedgradhs/Digraph alg4/directedgradhs/tinyDG.txt
+ *  javac-algs4 alg4/directedgraphs/Digraph.java
+ *  java-algs4 alg4/directedgraphs/Digraph alg4/directedgraphs/tinyDG.txt
  */
 public class Digraph {
 
