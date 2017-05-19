@@ -4,6 +4,9 @@
     <excludeFromCompile>
       <file url="file://$PROJECT_DIR$/src/chapter1/of3/tobe.txt" />
     </excludeFromCompile>
-    <bytecodeTargetLevel target="1.8" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="AlgTest_main" target="1.8" />
+      <module name="AlgTest_test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
