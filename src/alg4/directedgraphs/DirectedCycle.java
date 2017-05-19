@@ -6,6 +6,8 @@ import edu.princeton.cs.algs4.StdOut;
 
 /**
  * Created by ilumer on 17-5-18.
+ * java-algs4 alg4/directedgraphs/DirectedCycle alg4/directedgraphs/tinyDG.txt
+ * output: 3 5 4 3
  */
 public class DirectedCycle {
   private boolean[] marked;
