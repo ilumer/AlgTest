@@ -34,6 +34,7 @@ sourceSets{
         }
     }
 }
+//https://docs.gradle.org/current/userguide/java_plugin.html#sec:changing_java_project_layout
 
 // Define the main class for the application
 mainClassName = 'App'
