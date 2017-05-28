@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AlgTest.iml" filepath="$PROJECT_DIR$/AlgTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AlgTest_main.iml" filepath="$PROJECT_DIR$/.idea/modules/AlgTest_main.iml" group="AlgTest" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AlgTest_test.iml" filepath="$PROJECT_DIR$/.idea/modules/AlgTest_test.iml" group="AlgTest" />
     </modules>
   </component>
 </project>

@@ -90,3 +90,15 @@ hs_err_pid*
 
 .idea/kotlinc.xml
 .idea/codeStyleSettings.xml
+将删除 .gradle/
+将删除 .idea/inspectionProfiles/
+将删除 .idea/modules/
+将删除 build.gradle
+将删除 build/
+将删除 gradle/
+将删除 gradlew
+将删除 gradlew.bat
+将删除 lib/
+将删除 settings.gradle
+
+\.gradle/
