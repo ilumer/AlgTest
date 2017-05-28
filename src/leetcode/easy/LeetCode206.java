@@ -1,9 +1,11 @@
+package leetcode.easy;
+
 /**
  * 如何生成反向链表
  * http://blog.csdn.net/guyuealian/article/details/51119499
  * Created by ilumer on 17-3-25.
  */
-public class ReverseLinkedNode {
+public class LeetCode206 {
 
   /**
    * @param first 首节点
