@@ -102,3 +102,5 @@ hs_err_pid*
 将删除 settings.gradle
 
 \.gradle/
+# ignore build
+build/
