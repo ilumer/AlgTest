@@ -4,6 +4,7 @@ package leetcode.easy;
  * Created by ilumer on 17-5-31.
  */
 public class LeetCode204 {
+<<<<<<< HEAD
   //https://discuss.leetcode.com/topic/13654/my-simple-java-solution
   public int countPrimes(int n){
     boolean[] notPrime = new boolean[n];
@@ -33,4 +34,6 @@ public class LeetCode204 {
     }
     return true;
   }
+=======
+>>>>>>> cc602d0454e4c5915b84580c597d43d85346586b
 }
