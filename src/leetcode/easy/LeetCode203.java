@@ -35,7 +35,7 @@ public class LeetCode203 {
   //将全部的情况读入栈中
   public ListNode rescRemoveElements(ListNode head, int val) {
     if(head==null) return head;
-    head.next = removeElements(head.next,val);
+    head.next = rescRemoveElements(head.next,val);
     return head.val==val ? head.next : head ;
   }
 }
