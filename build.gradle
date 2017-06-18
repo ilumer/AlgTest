@@ -39,3 +39,9 @@ sourceSets{
 // Define the main class for the application
 mainClassName = 'App'
 
+
+task deleteSourceClass(type:Delete){
+  delete fileTree("src"){
+    include '**/*.class'
+  }
+}
