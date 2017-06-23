@@ -24,11 +24,11 @@ public class AcyclicSP {
     EdgeWeightedDigraphTopoLogical topoLogical = new EdgeWeightedDigraphTopoLogical(g);
 
     for (int v : topoLogical.order) {
-      realx(g, v);
+      relax(g, v);
     }
   }
 
-  private void realx(EdgeWeightedDigraph g, int v) {
+  private void relax(EdgeWeightedDigraph g, int v) {
     for (DirectedEdge e : g.adj(v)) {
       int to = e.to();
       if (distTo[to] > distTo[v] + e.weight()) {

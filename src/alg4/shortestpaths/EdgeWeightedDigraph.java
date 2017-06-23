@@ -5,7 +5,7 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
 public class EdgeWeightedDigraph {
-  private int V;//边的数量
+  private int V;//顶点的数量
   private int E;//E的数量
   private Bag<DirectedEdge>[] adj;//邻接表
 
