@@ -27,7 +27,8 @@ public class MySqrt {
   //http://www.guokr.com/question/461510/
   public static int sqrt(int x) {
     int r = x;
-    while (r * r > x) {
+    //乘法会出现溢出
+    while (r > x/r) {
       r = (r + (x / r)) / 2;
     }
     return r;
