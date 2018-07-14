@@ -51,14 +51,12 @@ public class KeyIndexCounting {
             items[i] = aux[i];
         }
 
-        //测试输出值 这里的测试数据钟并不是包含全部组的 所以需要检测空组
         for (int i = 0; i < items.length; i++) {
             if (i%5==0) {
                 System.out.println();
             }
             Item item = items[i];
-            if (item != null)
-                System.out.print(item.value+"\t");
+            System.out.print(item.value+"\t");
         }
     }
 }
