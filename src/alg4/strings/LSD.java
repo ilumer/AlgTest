@@ -10,24 +10,24 @@ import edu.princeton.cs.algs4.StdOut;
  * test : java-algs4 alg4.strings.LSD < words3.txt
  * test file: https://algs4.cs.princeton.edu/51radix/words3.txt
  * output:all
- *        bad
- *        bed
- *        bug
- *        dad
- *        dim
- *        ....
- *        tar
- *        tip
- *        wad
- *        was
- *        wee
- *        yes
- *        yet
- *        zoo
+ * bad
+ * bed
+ * bug
+ * dad
+ * dim
+ * ....
+ * tar
+ * tip
+ * wad
+ * was
+ * wee
+ * yes
+ * yet
+ * zoo
  */
 public class LSD {
 
-    private LSD(){
+    private LSD() {
 
     }
     /**
@@ -65,7 +65,14 @@ public class LSD {
     }
 
     public static void main(String[] args) {
-        String[] a = StdIn.readAllStrings();
+        String[] a = new String[]{
+                "China",
+                "United Kingdom",
+                "Germany",
+                "France",
+                "Japan",
+                "Israel"
+        };//StdIn.readAllStrings();
         int n = a.length;
         int w = a[0].length();
 
