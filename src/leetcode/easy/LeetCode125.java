@@ -29,4 +29,32 @@ public class LeetCode125 {
     }
     return true;
   }
+
+    /**
+     *  需要考虑到number 和 letter
+     *  这个时候不能只考虑到大小写之间相差32
+     * @param s
+     * @return
+     */
+  public boolean addWayIsPalindrome(String s){
+    int i = 0,j = s.length()-1;
+    while (i<j){
+        char a = s.charAt(i);
+        char b = s.charAt(j);
+        while (!Character.isLetterOrDigit(a) && i<j){
+            i++;
+            a  = s.charAt(i);
+        }
+        while (!Character.isLetterOrDigit(b) && i<j){
+            j --;
+            b = s.charAt(j);
+        }
+        if (!(a == b ||(Character.isLetter(a) && Character.isLetter(b) && Math.abs(a - b)==32))){
+            return false;
+        }
+        i++;
+        j--;
+    }
+    return true;
+  }
 }
