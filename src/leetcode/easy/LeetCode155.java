@@ -32,6 +32,7 @@ public class LeetCode155 {
       if (head == null) {
         head = new Node(x, x, null);
       }else {
+        //当前节点下最小的值
         head = new Node(x,Math.min(x,head.min),head);
       }
     }
