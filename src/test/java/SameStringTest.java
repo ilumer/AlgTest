@@ -9,7 +9,7 @@ public class SameStringTest {
   @Test
   public void isSameString() throws Exception {
     SameString sameString = new SameString();
-    Assert.assertEquals(true,sameString.isSameString("afd","afd"));
+    Assert.assertTrue(sameString.isSameString("afd", "afd"));
 
   }
 }
