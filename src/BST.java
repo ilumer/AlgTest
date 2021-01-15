@@ -252,6 +252,7 @@ public class BST<Key extends Comparable<Key> ,Value> {
       //值传递
       Node x = node;
       node = min(node.right);
+      // 删除掉min(node.right) 返回的节点 但是不能使用node 传递下去，关联关系会丢失
       node.right = deleteMin(x.right);
       //先删除后继节点
       //然后把要删除的节点的左右链接 连接到后继节点上
