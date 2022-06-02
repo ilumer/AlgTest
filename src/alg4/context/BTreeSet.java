@@ -5,7 +5,7 @@ package alg4.context;
 public class BTreeSet<Key extends Comparable<Key>> {
     private Page root = new Page(true);
 
-    public BTreeSET(Key sentinel) {
+    public void BTreeSET(Key sentinel) {
         add(sentinel);
     }
 
