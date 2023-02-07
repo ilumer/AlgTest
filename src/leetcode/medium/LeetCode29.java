@@ -30,7 +30,7 @@ public class LeetCode29 {
         boolean rev = false;
         if (dividend > 0) {
             dividend = -dividend;
-            rev = true;
+            rev = !rev;
         }
         if (divisor > 0) {
             divisor = -divisor;
@@ -62,15 +62,18 @@ public class LeetCode29 {
         // x 和 y 是负数，z 是正数
         // 需要判断 z * y >= x 是否成立
         int result = 0, add = y;
+        // 这里是在求z*y的返回值 所以如果出现了 result+add < x的情况 代表乘后的结果值超过了对应的x
         while (z != 0) {
             if ((z & 1) != 0) {
                 // 需要保证 result + add >= x
+                // 代表的
                 if (result < x - add) {
                     return false;
                 }
                 result += add;
             }
             if (z != 1) {
+                // 这里的检查只是为了避免下面的case 出现溢出的情况
                 // 需要保证 add + add >= x
                 if (add < x - add) {
                     return false;
@@ -81,5 +84,12 @@ public class LeetCode29 {
             z >>= 1;
         }
         return true;
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println(new LeetCode29().divide(Integer.MIN_VALUE, -1));
+
+        System.out.println(Integer.MIN_VALUE / -1);
     }
 }

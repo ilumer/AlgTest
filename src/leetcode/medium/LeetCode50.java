@@ -38,4 +38,18 @@ public class LeetCode50 {
             return myPositivePow(x, n);
         }
     }
+
+
+    public double myNonRecursivePositivePow(double x, int n) {
+        double res = 1;
+        while (n > 0) {
+            // 代表的是一个不能被2整除的情况
+            if (n % 2 != 0) {
+                res = res * x;
+            }
+            x = x * x;
+            n >>= 1;
+        }
+        return res;
+    }
 }
