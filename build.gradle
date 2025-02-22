@@ -16,12 +16,15 @@ apply plugin: 'application'
 repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    mavenCentral()
+    maven {
+        url="https://maven.aliyun.com/repository/public"
+    }
 }
 
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
-    compile 'edu.princeton.cs:algs4:1.0.2'
+    compile 'edu.princeton.cs:algs4:1.0.4'
 
     compile group: 'com.google.guava', name: 'guava', version: '11.0.2'
 
@@ -29,9 +32,9 @@ dependencies {
     compile 'junit:junit:4.12'
 }
 
-sourceSets{
-    main{
-        java{
+sourceSets {
+    main {
+        java {
             srcDirs = ['src']
         }
     }
@@ -42,8 +45,8 @@ sourceSets{
 mainClassName = 'App'
 
 
-task deleteSourceClass(type:Delete){
-  delete fileTree("src"){
-    include '**/*.class'
-  }
+task deleteSourceClass(type: Delete) {
+    delete fileTree("src") {
+        include '**/*.class'
+    }
 }

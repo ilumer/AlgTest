@@ -4,10 +4,10 @@ import java.util.*;
 
 public class LeetCode146 {
 
-    class LRUCache extends LinkedHashMap<Integer, Integer> {
+    class LRUCache3 extends LinkedHashMap<Integer, Integer> {
         private int capacity;
 
-        public LRUCache(int capacity) {
+        public LRUCache3(int capacity) {
             // 默认是插入的方式来实现的顺序的
             super(capacity, 0.75F, true);
             this.capacity = capacity;
@@ -28,89 +28,117 @@ public class LeetCode146 {
     }
 
 
+    public static void main(String[] args) {
+        LRUCache lRUCache = new LRUCache(2);
+        lRUCache.put(1, 1); // 缓存是 {1=1}
+        lRUCache.put(2, 2); // 缓存是 {1=1, 2=2}
+        System.out.println(lRUCache.get(1));    // 返回 1
+        lRUCache.put(3, 3); // 该操作会使得关键字 2 作废，缓存是 {1=1, 3=3}
+        System.out.println(lRUCache.get(2));    // 返回 -1 (未找到)
+        lRUCache.put(4, 4); // 该操作会使得关键字 1 作废，缓存是 {4=4, 3=3}
+        System.out.println(lRUCache.get(1));    // 返回 -1 (未找到)
+        System.out.println(lRUCache.get(3));    // 返回 3
+        System.out.println(lRUCache.get(4));    // 返回 4
 
-    public class LRUCache2 {
-        class DLinkedNode {
-            int key;
-            int value;
-            DLinkedNode prev;
-            DLinkedNode next;
+    }
 
-            public DLinkedNode() {
-            }
+    public static class LRUCache {
 
-            public DLinkedNode(int _key, int _value) {
-                key = _key;
-                value = _value;
-            }
+        class Node {
+            private Node pre;
+            private Node next;
+            private int value;
+
+            private int key;
+
         }
 
-        private Map<Integer, DLinkedNode> cache = new HashMap<Integer, DLinkedNode>();
-        private int capacity;
-        private DLinkedNode head, tail;
+        private Map<Integer, Node> map;
 
-        public LRUCache2(int capacity) {
-            this.capacity = capacity;
-            // 使用伪头部和伪尾部节点
-            head = new DLinkedNode();
-            tail = new DLinkedNode();
+        private Node head;
+
+        private Node tail;
+
+        private int capacity;
+
+        private int size = 0;
+
+        public LRUCache(int capacity) {
+            map = new HashMap<>();
+            head = new Node();
+            tail = new Node();
             head.next = tail;
-            tail.prev = head;
+            tail.pre = head;
+            this.capacity = capacity;
         }
 
         public int get(int key) {
-            DLinkedNode node = cache.get(key);
+            Node node = map.get(key);
             if (node == null) {
                 return -1;
+            } else {
+                // 移动到头节点
+                moveToHead(node);
+                return node.value;
             }
-            // 如果 key 存在，先通过哈希表定位，再移到头部
-            moveToHead(node);
-            return node.value;
         }
 
         public void put(int key, int value) {
-            DLinkedNode node = cache.get(key);
-            if (node == null) {
-                // 如果 key 不存在，创建一个新的节点
-                DLinkedNode newNode = new DLinkedNode(key, value);
-                // 添加进哈希表
-                cache.put(key, newNode);
-                // 添加至双向链表的头部
-                addToHead(newNode);
-                if (cache.size() > capacity) {
-                    // 如果超出容量，删除双向链表的尾部节点
-                    DLinkedNode tail = removeTail();
-                    // 删除哈希表中对应的项
-                    cache.remove(tail.key);
-                }
-            } else {
-                // 如果 key 存在，先通过哈希表定位，再修改 value，并移到头部
+            Node node = map.get(key);
+            if (node != null) {
                 node.value = value;
-                moveToHead(node);
+                // 这里不是一个新的节点
+                removeOldNode(node);
+            } else {
+                node = new Node();
+                node.value = value;
+                node.key = key;
+                size++;
+            }
+            map.put(key, node);
+            // 添加新的节点并且移动到头节点
+            addNodeToHead(node);
+            if (size > capacity) {
+                size--;
+                map.remove(tail.pre.key);
+                removeOldNode(tail.pre);
             }
         }
 
-        private void addToHead(DLinkedNode node) {
-            node.prev = head;
+        private void  moveToHead(Node node){
+            removeOldNode(node);
+            addNodeToHead(node);
+        }
+
+
+        /**
+         * head.next -> node.next -> x
+         * x.pre->node.pre->head
+         * 减少一个节点 node
+         * head.next -> x
+         * x.pre-> head
+         * @param node
+         */
+        private void removeOldNode(Node node) {
+            Node pre = node.pre;
+            Node next = node.next;
+            pre.next = next;
+            next.pre = pre;
+        }
+
+        /**
+         * head.next -> x
+         * x.pre-> head
+         * 新加一个节点 node
+         * head.next -> node.next -> x
+         * x.pre->node.pre->head
+         * @param node
+         */
+        public void addNodeToHead(Node node) {
             node.next = head.next;
-            head.next.prev = node;
+            head.next.pre=node;
             head.next = node;
-        }
-
-        private void removeNode(DLinkedNode node) {
-            node.prev.next = node.next;
-            node.next.prev = node.prev;
-        }
-
-        private void moveToHead(DLinkedNode node) {
-            removeNode(node);
-            addToHead(node);
-        }
-
-        private DLinkedNode removeTail() {
-            DLinkedNode res = tail.prev;
-            removeNode(res);
-            return res;
+            node.pre = head;
         }
     }
 }
